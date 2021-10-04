@@ -44,3 +44,5 @@ Route::get('/help', function () {
 Route::post('/change-password',[ChangePasswordController::class, 'changePassword'])->name('changepassword');
 
 Route::get('/status-user-change', [DisabledUserController::class, 'disabledUser'])->name('changeStatus');
+
+//nuevo
