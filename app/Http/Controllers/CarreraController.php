@@ -42,14 +42,17 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        //VALIDAR LA CARRERA
+        $request->validate([
+            'codigo' => 'regex:/[1-9]/',
+            'nombre' => 'regex:/[A-z]/'
+        ]);
 
         Carrera::create([
             'codigo' => $request->codigo,
             'nombre' => $request->nombre
         ]);
 
-        return redirect('/carrera');
+        return redirect('/carrera')->with('success','Carrera creada con exito');
     }
 
     /**

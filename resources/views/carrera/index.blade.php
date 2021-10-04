@@ -3,6 +3,11 @@
 @section('content')
 
 @if (Auth::user()->rol == 'Administrador')
+@if (session('success'))
+   <div class="alert alert-success">
+        {{ session('success') }}
+   </div>
+@endif
 <div class="container">
     <div class="row mb-3">
         <div class="col col-2">

@@ -67,11 +67,7 @@
                 }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    Swal.fire('Guardado!', '', 'success').then((result) => {
-                        if (result.isConfirmed) {
-                            form.submit();
-                        }
-                    });
+                    form.submit();
 
                 } else if (result.isDenied) {
                     Swal.fire('No guardado', '', 'info')
