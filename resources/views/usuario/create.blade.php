@@ -84,6 +84,20 @@
     <script>
         const rolSelect = document.getElementById('rol');
         const carreraSelect = document.getElementById('carrera')
+
+        //variable de carreras desde el controlador de carreras
+        const listaCarreras = {!! json_encode($carreras) !!}
+        if (listaCarreras.length === 1) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'No puedes crear usuarios sin tener carreras en el sistema!',
+                footer: 'Para crear carreras has&nbsp;<a href="/carrera/create">click aca</a>'
+            }).then((result) => {
+                window.location.href = '/usuario'
+            })
+        }
+
         rolSelect.addEventListener('change', function(e){
             if (rolSelect.value === 'Jefe Carrera') {
             carreraSelect.value = null;

@@ -18,7 +18,7 @@ class UsuarioController extends Controller
     public function index(Request $request)
     {
         if ($request->search == null) {
-            $usuarios = User::simplePaginate(5);
+            $usuarios = User::simplePaginate(3);
             return view('usuario.index')->with('usuarios',$usuarios);
         }else {
             $usuarios = User::where('rut', $request->search)->simplePaginate(1);
@@ -89,7 +89,7 @@ class UsuarioController extends Controller
     public function edit(User $usuario)
     {
         $carreras = Carrera::all();
-        return view('usuario.edit')->with('user',$usuario)->with('carreras',$carreras);
+        return view('usuario.edit')->with('usuario',$usuario)->with('carreras',$carreras);
     }
 
     /**
@@ -99,23 +99,23 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $usuario)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'rut' => ['required', 'string', 'unique:users', new ValidarRut()],
             'rol' => ['string','required', 'in:Jefe Carrera,Alumno'],
             'carrera'=>['exists:App\Models\Carrera,id']
         ]);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->rut = $request->rut;
-        $user->rol = $request->rol;
-        $user->carrera_id = $request->carrera;
-        $user->save();
-        return redirect('/carrera');
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->rut = $request->rut;
+        $usuario->rol = $request->rol;
+        $usuario->carrera_id = $request->carrera;
+        $usuario->save();
+        return redirect('/usuario');
     }
 
     /**

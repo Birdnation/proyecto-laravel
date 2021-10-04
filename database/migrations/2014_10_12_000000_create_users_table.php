@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('rut')->unique();
-            $table->tinyInteger('status'); //0: habilitado; 1: habilitado
+            $table->tinyInteger('status'); //0: deshabilitado; 1: habilitado
             $table->enum('rol',['Administrador','Jefe Carrera', 'Alumno']);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
