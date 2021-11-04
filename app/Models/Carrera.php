@@ -19,8 +19,6 @@ class Carrera extends Model
         'codigo'
     ];
 
-
-
     public function users(){
         return $this->hasMany(User::class);
     }

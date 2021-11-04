@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 @if (Auth::user()->rol == 'Administrador')
 <div class="container">
     <div class="row">
@@ -55,6 +56,7 @@
                         <div class="form-group">
                             <label for="form-control-label" style="color: white">Rol</label>
                             <select class="form-control" name="rol" id="rol">
+                                <option value={{ null }}>Seleccione rol</option>
                                 <option value="Jefe Carrera">Jefe de carrera</option>
                                 <option value="Alumno">Alumno</option>
                             </select>
@@ -62,10 +64,10 @@
 
                         <div class="form-group">
                             <label for="form-control-label" style="color: white">Carrera</label>
-                            <select class="form-control" name="carrera" id="carrera" disabled>
-                                <option value={{null}}>Seleccione carrera</option>
+                            <select class="form-control" name="carrera" id="carrera">
+                                <option value={{ null }}>Seleccione carrera</option>
                                 @foreach ($carreras as $carrera)
-                                <option value={{$carrera->id}}>{{$carrera->nombre}}</option>
+                                <option value={{ $carrera->id }}>{{ $carrera->nombre }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -82,36 +84,54 @@
         </div>
     </div>
     <script>
-        const rolSelect = document.getElementById('rol');
-        const carreraSelect = document.getElementById('carrera')
+        const rolSelect = document.getElementById('rol')
+                const carreraSelect = document.getElementById('carrera')
+                const optionSelect = document.getElementById("carrera").getElementsByTagName("option");
 
-        //variable de carreras desde el controlador de carreras
-        const listaCarreras = {!! json_encode($carreras) !!}
-        if (listaCarreras.length === 2) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'No puedes crear usuarios sin tener carreras en el sistema!',
-                footer: 'Para crear carreras has&nbsp;<a href="/carrera/create">click aca</a>'
-            }).then((result) => {
-                window.location.href = '/usuario'
-            })
-        }
+                //variable de carreras desde el controlador de carreras
+                const listaCarreras = {!! json_encode($carreras) !!}
+                console.log(listaCarreras);
+                if (listaCarreras.length === 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'No puedes crear usuarios sin tener carreras en el sistema!',
+                        footer: 'Para crear carreras has&nbsp;<a href="/carrera/create">click aca</a>'
+                    }).then((result) => {
+                        window.location.href = '/usuario'
+                    })
+                }
 
-        rolSelect.addEventListener('change', function(e){
-            if (rolSelect.value === 'Jefe Carrera') {
-            carreraSelect.value = null;
-            carreraSelect.disabled = true;
-            }else{
-                carreraSelect.disabled = false;
-            }
-        })
-
+                rolSelect.addEventListener('change', function(e) {
+                    if (rolSelect.value === 'Jefe Carrera') {
+                        listaCarreras.forEach(carrera => {
+                            carrera.users.forEach(usuario => {
+                                if (usuario.rol === "Jefe Carrera") {
+                                    for (let i = 0; i < optionSelect.length; i++) {
+                                        if (carrera.id == optionSelect[i].value) {
+                                            optionSelect[i].style.display = "none"
+                                        }
+                                    }
+                                }
+                            });
+                        });
+                    } else {
+                        listaCarreras.forEach(carrera => {
+                            carrera.users.forEach(usuario => {
+                                for (let i = 0; i < optionSelect.length; i++) {
+                                    if (carrera.id == optionSelect[i].value) {
+                                        optionSelect[i].style.display = "unset"
+                                    }
+                                }
+                            });
+                        });
+                    }
+                })
     </script>
 
     @else
     @php
-    header("Location: /home" );
+    header('Location: /home');
     exit();
     @endphp
     @endif

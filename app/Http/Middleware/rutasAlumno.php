@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class nombre
+class rutasAlumno
 {
     /**
      * Handle an incoming request.
@@ -16,6 +16,11 @@ class nombre
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+
+        if (auth()->check() && auth()->user()->rol == 'Alumno') {
+            return $next($request);
+        }else {
+            return redirect('home');
+        }
     }
 }

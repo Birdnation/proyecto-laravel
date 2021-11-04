@@ -63,7 +63,7 @@
 
                         <div class="form-group">
                             <label for="form-control-label" style="color: white">Carrera</label>
-                            <select class="form-control" name="carrera" id="carrera" disabled>
+                            <select class="form-control" name="carrera" id="carrera">
                                 <option value={{null}}>Seleccione carrera</option>
                                 @foreach ($carreras as $carrera)
                                 <option value={{$carrera->id}}>{{$carrera->nombre}}</option>
@@ -87,20 +87,6 @@
         const carreraSelect = document.getElementById('carrera');
         rolSelect.value = {!! json_encode($usuario->rol) !!}
         carreraSelect.value = {!! json_encode($usuario->carrera_id)!!}
-        if (rolSelect.value === "Jefe Carrera") {
-            carreraSelect.value = null;
-            carreraSelect.disabled = true;
-        }else{
-            carreraSelect.disabled = false;
-        }
-        rolSelect.addEventListener('change', function(e){
-            if (rolSelect.value === 'Jefe Carrera') {
-            carreraSelect.value = null;
-            carreraSelect.disabled = true;
-            }else{
-                carreraSelect.disabled = false;
-            }
-        })
 
     </script>
 

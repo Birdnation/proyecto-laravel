@@ -21,5 +21,29 @@ class DatabaseSeeder extends Seeder
             'rol' => 'Administrador',
             'password' => bcrypt("123456"),
         ]);
+
+        \App\Models\Carrera::create([
+            'codigo' => 1234,
+            'nombre' => 'Carrera Prueba 1',
+        ]);
+
+        \App\Models\Solcitud::create([
+            'tipo' => 'Sobrecupo'
+        ]);
+        \App\Models\Solcitud::create([
+            'tipo' => 'Cambio Paralelo'
+        ]);
+        \App\Models\Solcitud::create([
+            'tipo' => 'Eliminación Asignatura'
+        ]);
+        \App\Models\Solcitud::create([
+            'tipo' => 'Inscripción Asignatura'
+        ]);
+        \App\Models\Solcitud::create([
+            'tipo' => 'Ayudantía'
+        ]);
+        \App\Models\Solcitud::create([
+            'tipo' => 'Facilidades'
+        ]);
     }
 }

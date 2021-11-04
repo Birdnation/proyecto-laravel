@@ -18,7 +18,7 @@ class UsuarioController extends Controller
     public function index(Request $request)
     {
         if ($request->search == null) {
-            $usuarios = User::simplePaginate(3);
+            $usuarios = User::simplePaginate(5);
             return view('usuario.index')->with('usuarios',$usuarios);
         }else {
             $usuarios = User::where('rut', $request->search)->simplePaginate(1);
@@ -33,7 +33,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        $carreras = Carrera::all();
+        $carreras = Carrera::with('users')->get();
         return view('usuario.create')->with('carreras', $carreras);
     }
 
@@ -52,6 +52,7 @@ class UsuarioController extends Controller
             'rol' => ['string','required', 'in:Administrador,Jefe Carrera,Alumno'],
             'carrera'=>['exists:App\Models\Carrera,id']
         ]);
+
 
         //Logica para recortar el rut a 6 digitos:
 
@@ -104,7 +105,7 @@ class UsuarioController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'rut' => ['required', 'string', 'unique:users', new ValidarRut()],
+            'rut' => ['required', 'string', new ValidarRut()],
             'rol' => ['string','required', 'in:Jefe Carrera,Alumno'],
             'carrera'=>['exists:App\Models\Carrera,id']
         ]);
