@@ -16,7 +16,7 @@ class CreateSolcitudUserTable extends Migration
         Schema::create('solcitud_user', function (Blueprint $table) {
             $table->id();
             $table->string('telefono');
-            $table->tinyInteger('estado')->default(0); //0: Pendiente, 1:Aceptada, 2:Aceptada con obs, 3:Rechazada
+            $table->tinyInteger('estado')->default(0); //0: Pendiente, 1:Aceptada, 2:Aceptada con obs, 3:Rechazada, 4:anulada
 
             //columnas para sobrecupo, cambio paralelo, eliminación e inscripción asignatura.
             $table->string('NRC')->nullable();

@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\BuscarEstudianteController;
+use App\Http\Controllers\CargaMasivaController;
 use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DisabledUserController;
+use App\Http\Controllers\EstadisiticasController;
 use App\Http\Controllers\SolcitudController;
 use App\Http\Controllers\UsuarioController;
 use App\Models\Solcitud;
@@ -38,7 +40,7 @@ Route::resource('usuario', UsuarioController::class,['middleware' => 'auth']);
 
 Route::middleware(['rutasAlumno'])->group(function () {
     Route::resource('solicitud', SolcitudController::class);
-
+    Route::get('/solicitud/{id}/edit', [SolcitudController::class, 'edit'])->name('editarSolicitud');
 });
 
 Route::middleware(['rutasJefe'])->group(function () {
@@ -46,6 +48,9 @@ Route::middleware(['rutasJefe'])->group(function () {
     Route::post('alumno',[BuscarEstudianteController::class, 'devolverEstudiante'])->name('postBuscarEstudiante');
     Route::get('alumno/{id}', [BuscarEstudianteController::class,'mostrarEstudiante'])->name('mostrarEstudiante');
     Route::get('alumno/{alumno_id}/solicitud/{id}', [BuscarEstudianteController::class, 'verDatosSolicitud'])->name('verSolicitudAlumno');
+    Route::get('estadisticas', [EstadisiticasController::class, 'showEstadistica'])->name('estadisitica');
+    Route::get('carga-masiva', [CargaMasivaController::class, 'index'])->name('indexCargaMasiva');
+    Route::post('carga-masiva', [CargaMasivaController::class, 'carga'])->name('cargaExcel');
 });
 
 Auth::routes();

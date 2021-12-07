@@ -76,9 +76,9 @@
         })
     </script>
     @else
-@php
-header("Location: /home" );
-exit();
-@endphp
-@endif
+    @php
+    header("Location: /home" );
+    exit();
+    @endphp
+    @endif
     @endsection

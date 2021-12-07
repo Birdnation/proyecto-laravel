@@ -17,7 +17,7 @@
 
             <div class="col-lg-12 login-form">
                 <div class="col-lg-12 login-form">
-                    <form method="POST" action="{{ route('usuario.store') }}">
+                    <form id="form_create" method="POST" action="{{ route('usuario.store') }}">
                         @csrf
                         <div class="form-group">
                             <label class="form-control-label">NOMBRE</label>

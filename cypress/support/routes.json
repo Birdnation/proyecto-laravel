@@ -1,0 +1,492 @@
+{
+  "ignition.healthCheck": {
+    "name": "ignition.healthCheck",
+    "domain": null,
+    "action": "Facade\\Ignition\\Http\\Controllers\\HealthCheckController",
+    "uri": "_ignition/health-check",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "ignition.executeSolution": {
+    "name": "ignition.executeSolution",
+    "domain": null,
+    "action": "Facade\\Ignition\\Http\\Controllers\\ExecuteSolutionController",
+    "uri": "_ignition/execute-solution",
+    "method": [
+      "POST"
+    ]
+  },
+  "ignition.shareReport": {
+    "name": "ignition.shareReport",
+    "domain": null,
+    "action": "Facade\\Ignition\\Http\\Controllers\\ShareReportController",
+    "uri": "_ignition/share-report",
+    "method": [
+      "POST"
+    ]
+  },
+  "ignition.scripts": {
+    "name": "ignition.scripts",
+    "domain": null,
+    "action": "Facade\\Ignition\\Http\\Controllers\\ScriptController",
+    "uri": "_ignition/scripts/{script}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "ignition.styles": {
+    "name": "ignition.styles",
+    "domain": null,
+    "action": "Facade\\Ignition\\Http\\Controllers\\StyleController",
+    "uri": "_ignition/styles/{style}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "cypress.factory": {
+    "name": "cypress.factory",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@factory",
+    "uri": "__cypress__/factory",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.login": {
+    "name": "cypress.login",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@login",
+    "uri": "__cypress__/login",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.logout": {
+    "name": "cypress.logout",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@logout",
+    "uri": "__cypress__/logout",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.artisan": {
+    "name": "cypress.artisan",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@artisan",
+    "uri": "__cypress__/artisan",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.run-php": {
+    "name": "cypress.run-php",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@runPhp",
+    "uri": "__cypress__/run-php",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.csrf-token": {
+    "name": "cypress.csrf-token",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@csrfToken",
+    "uri": "__cypress__/csrf_token",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "cypress.routes": {
+    "name": "cypress.routes",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@routes",
+    "uri": "__cypress__/routes",
+    "method": [
+      "POST"
+    ]
+  },
+  "": {
+    "name": null,
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Auth\\ConfirmPasswordController@confirm",
+    "uri": "password/confirm",
+    "method": [
+      "POST"
+    ]
+  },
+  "carrera.index": {
+    "name": "carrera.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CarreraController@index",
+    "uri": "carrera",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "carrera.create": {
+    "name": "carrera.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CarreraController@create",
+    "uri": "carrera/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "carrera.store": {
+    "name": "carrera.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CarreraController@store",
+    "uri": "carrera",
+    "method": [
+      "POST"
+    ]
+  },
+  "carrera.show": {
+    "name": "carrera.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CarreraController@show",
+    "uri": "carrera/{carrera}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "carrera.edit": {
+    "name": "carrera.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CarreraController@edit",
+    "uri": "carrera/{carrera}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "carrera.update": {
+    "name": "carrera.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CarreraController@update",
+    "uri": "carrera/{carrera}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "carrera.destroy": {
+    "name": "carrera.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CarreraController@destroy",
+    "uri": "carrera/{carrera}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "usuario.index": {
+    "name": "usuario.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UsuarioController@index",
+    "uri": "usuario",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "usuario.create": {
+    "name": "usuario.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UsuarioController@create",
+    "uri": "usuario/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "usuario.store": {
+    "name": "usuario.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UsuarioController@store",
+    "uri": "usuario",
+    "method": [
+      "POST"
+    ]
+  },
+  "usuario.show": {
+    "name": "usuario.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UsuarioController@show",
+    "uri": "usuario/{usuario}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "usuario.edit": {
+    "name": "usuario.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UsuarioController@edit",
+    "uri": "usuario/{usuario}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "usuario.update": {
+    "name": "usuario.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UsuarioController@update",
+    "uri": "usuario/{usuario}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "usuario.destroy": {
+    "name": "usuario.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UsuarioController@destroy",
+    "uri": "usuario/{usuario}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "solicitud.index": {
+    "name": "solicitud.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SolcitudController@index",
+    "uri": "solicitud",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "solicitud.create": {
+    "name": "solicitud.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SolcitudController@create",
+    "uri": "solicitud/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "solicitud.store": {
+    "name": "solicitud.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SolcitudController@store",
+    "uri": "solicitud",
+    "method": [
+      "POST"
+    ]
+  },
+  "solicitud.show": {
+    "name": "solicitud.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SolcitudController@show",
+    "uri": "solicitud/{solicitud}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "solicitud.edit": {
+    "name": "solicitud.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SolcitudController@edit",
+    "uri": "solicitud/{solicitud}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "solicitud.update": {
+    "name": "solicitud.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SolcitudController@update",
+    "uri": "solicitud/{solicitud}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "solicitud.destroy": {
+    "name": "solicitud.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SolcitudController@destroy",
+    "uri": "solicitud/{solicitud}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "buscarEstudiante": {
+    "name": "buscarEstudiante",
+    "domain": null,
+    "action": "Closure",
+    "uri": "buscar-estudiante",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "postBuscarEstudiante": {
+    "name": "postBuscarEstudiante",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\BuscarEstudianteController@devolverEstudiante",
+    "uri": "alumno",
+    "method": [
+      "POST"
+    ]
+  },
+  "mostrarEstudiante": {
+    "name": "mostrarEstudiante",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\BuscarEstudianteController@mostrarEstudiante",
+    "uri": "alumno/{id}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "verSolicitudAlumno": {
+    "name": "verSolicitudAlumno",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\BuscarEstudianteController@verDatosSolicitud",
+    "uri": "alumno/{alumno_id}/solicitud/{id}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "estadisitica": {
+    "name": "estadisitica",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\EstadisiticasController@showEstadistica",
+    "uri": "estadisticas",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "login": {
+    "name": "login",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Auth\\LoginController@showLoginForm",
+    "uri": "login",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "logout": {
+    "name": "logout",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Auth\\LoginController@logout",
+    "uri": "logout",
+    "method": [
+      "POST"
+    ]
+  },
+  "register": {
+    "name": "register",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Auth\\RegisterController@showRegistrationForm",
+    "uri": "register",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "password.request": {
+    "name": "password.request",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Auth\\ForgotPasswordController@showLinkRequestForm",
+    "uri": "password/reset",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "password.email": {
+    "name": "password.email",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Auth\\ForgotPasswordController@sendResetLinkEmail",
+    "uri": "password/email",
+    "method": [
+      "POST"
+    ]
+  },
+  "password.reset": {
+    "name": "password.reset",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Auth\\ResetPasswordController@showResetForm",
+    "uri": "password/reset/{token}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "password.update": {
+    "name": "password.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Auth\\ResetPasswordController@reset",
+    "uri": "password/reset",
+    "method": [
+      "POST"
+    ]
+  },
+  "password.confirm": {
+    "name": "password.confirm",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Auth\\ConfirmPasswordController@showConfirmForm",
+    "uri": "password/confirm",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "home": {
+    "name": "home",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\HomeController@index",
+    "uri": "home",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "help": {
+    "name": "help",
+    "domain": null,
+    "action": "Closure",
+    "uri": "help",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "changepassword": {
+    "name": "changepassword",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ChangePasswordController@changePassword",
+    "uri": "change-password",
+    "method": [
+      "POST"
+    ]
+  },
+  "changeStatus": {
+    "name": "changeStatus",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\DisabledUserController@disabledUser",
+    "uri": "status-user-change",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  }
+}

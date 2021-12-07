@@ -115,9 +115,16 @@ class SolcitudController extends Controller
      * @param  \App\Models\Solcitud  $solcitud
      * @return \Illuminate\Http\Response
      */
-    public function edit(Solcitud $solcitud)
+    public function edit(String $id)
     {
-        //
+        $getUserWithSol = Auth::user()->solicitudes;
+        foreach ($getUserWithSol as $key => $solicitud) {
+            if ($solicitud->getOriginal()["pivot_id"] == $id) {
+
+                return view('solicitud.edit')->with("solicitud",$solicitud);
+            }
+        }
+
     }
 
     /**
@@ -127,9 +134,70 @@ class SolcitudController extends Controller
      * @param  \App\Models\Solcitud  $solcitud
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Solcitud $solcitud)
+    public function update(Request $request, Solcitud $solicitud)
     {
-        //
+        switch ($solicitud->id) {
+            case 1:
+                dd($request);
+                $request->validate([
+                    'telefono' => ['regex:/[0-9]*/','required'],
+                    'nrc' => ['required'],
+                    'nombre' => ['required'],
+                    'detalle' => ['required']
+                ]);
+
+                $findUser = User::find($request->user);
+
+                $findUser->solicitudes()->attach($request->tipo, [
+                    'telefono' => $request->telefono,
+                    'NRC' => $request->nrc,
+                    'nombre_asignatura' => $request->nombre,
+                    'detalles' => $request->detalle
+                ]);
+                return redirect('/solicitud');
+                break;
+
+            case 6:
+                $request->validate([
+                    'telefono' => ['regex:/[0-9]*/','required'],
+                    'nombre' => ['required'],
+                    'detalle' => ['required'],
+                    'facilidad' => ['required'],
+                    'profesor' => ['required'],
+                    'adjunto.*' => ['mimes:pdf,jpg,jpeg,doc,docx'],
+                ]);
+                $findUser = User::find($request->user);
+                $aux = 0;
+
+
+                foreach ($request->adjunto as $file) {
+                    $name = $aux.time().'-'.$findUser->name.'.pdf';
+                    $file->move(public_path('\storage\docs'), $name);
+                    $datos[] = $name;
+                    $aux++;
+                }
+
+                $getUserWithSol = Auth::user()->solicitudes;
+                foreach ($getUserWithSol as $key => $solicitud) {
+                    if ($solicitud->getOriginal()["pivot_id"] == $request->id_solicitud) {
+                        $solicitud->pivot->telefono = $request->telefono;
+                        $solicitud->pivot->nombre_asignatura = $request->nombre;
+                        $solicitud->pivot->detalles = $request->detalle;
+                        $solicitud->pivot->tipo_facilidad = $request->facilidad;
+                        $solicitud->pivot->nombre_profesor = $request->profesor;
+                        $solicitud->pivot->telefono = $request->telefono;
+                        $solicitud->pivot->archivos = json_encode($datos);
+                        $solicitud->pivot->save();
+                    }
+                }
+
+                return redirect('/solicitud');
+                break;
+
+            default:
+                # code...
+                break;
+        }
     }
 
     /**
@@ -142,4 +210,6 @@ class SolcitudController extends Controller
     {
         //
     }
+
+
 }
